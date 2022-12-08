@@ -1,0 +1,39 @@
+server:
+    port: 8080
+spring:
+    application:
+        name: account-service
+    redis:
+        host: localhost
+        port: 6379
+        username: alliano-dev
+        password: alliano361
+    datasource:
+        url: jdbc:postgresql://localhost:5432/account
+        username: alliano-dev
+        password: alliano361**
+        hikari:
+            connection-timeout: 600000
+            idle-timeout: 600000
+            max-lifetime: 180000
+            maximum-pool-size: 10
+    jpa:
+        database: postgresql
+        hibernate:
+            ddl-auto: update
+        show-sql: true
+        properties:
+            hibernate:
+                dialec: org.hibernate.dialect.PostgreSQLDialcect
+                '[format_sql]': true
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+        defaultZone: http://localhost:8761/eureka/
+logging:
+  level:
+    jap:
+        microservice:
+            account-service: debug
