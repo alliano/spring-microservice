@@ -1,0 +1,28 @@
+server:
+    port: 8083
+spring:
+    application:
+        name: email-service
+    redis:
+        host: localhost
+        port: 6379
+        username: alliano-dev
+        password: alliano361
+        database: 0
+        connection-timeout: 10s
+        chanel-name: mail-sender
+    mail:
+        port: 587
+        host: smtp.gmail.com
+        username:
+        password:
+        properties:
+            smtp:
+                auth: true
+                starttles:
+                    enable: true
+logging:
+  level:
+    jap:
+        microservice:
+            email-service: debug
