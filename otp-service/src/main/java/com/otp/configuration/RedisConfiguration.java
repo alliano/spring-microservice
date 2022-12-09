@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.listener.ChannelTopic;
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 
@@ -27,9 +28,15 @@ public class RedisConfiguration {
     }
 
     @Bean
+    public ChannelTopic channelTopic() {
+        return new ChannelTopic(this.applicationProperties.getChanelName());
+    }
+
+    @Bean
     public RedisTemplate<String, String> redisTemplate(){
         RedisTemplate<String, String> template = new RedisTemplate<String, String>();
         template.setConnectionFactory(redisConnection());
+        template.setValueSerializer(new Jackson2JsonRedisSerializer<String>(String.class));
         template.setKeySerializer(new Jackson2JsonRedisSerializer<String>(String.class));
         return template;
     }

@@ -1,0 +1,58 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch EmailServiceApplication",
+            "request": "launch",
+            "mainClass": "com.email.EmailServiceApplication",
+            "projectName": "email-service"
+        },
+        {
+            "type": "java",
+            "name": "Launch OtpServiceApplication",
+            "request": "launch",
+            "mainClass": "com.otp.OtpServiceApplication"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-OtpServiceApplication<otp-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.otp.OtpServiceApplication",
+            "projectName": "otp-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-AccountServiceApplication<account-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.account.accountservice.AccountServiceApplication",
+            "projectName": "account-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-OtpServiceApplication<otp-service-2>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.otp.OtpServiceApplication",
+            "projectName": "otp-service-2",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ServiceRegistryApplication<service-registry>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.registry.serviceregistry.ServiceRegistryApplication",
+            "projectName": "service-registry",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

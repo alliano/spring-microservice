@@ -18,4 +18,6 @@ public class ApplicationProperties {
 
     private String password;
 
+    private String chanelName;
+
 }

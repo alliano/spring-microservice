@@ -9,4 +9,6 @@ public interface OtpService {
     public String generateOtp();
 
     public String loggger();
+
+    public void sendOtpcode(String to, String body);
 }
