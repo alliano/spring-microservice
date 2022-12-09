@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.account.accountservice.dtos.AccountRegisterDto;
 
-@FeignClient(name = "otp", url = "http://localhost:8081")
+@FeignClient(name = "otp")
 public interface OtpClient {
 
     @RequestMapping(method = RequestMethod.POST, path = "/request")
