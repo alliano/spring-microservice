@@ -9,7 +9,6 @@ import org.springframework.data.redis.listener.ChannelTopic;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
-
 import com.email.services.RedisMessageSubcriber;
 
 import lombok.AllArgsConstructor;
@@ -47,6 +46,7 @@ public class RedisConfiguration {
     public RedisMessageListenerContainer redisMessageListenerContainer(){
         RedisMessageListenerContainer container = new RedisMessageListenerContainer();
         container.setConnectionFactory(redisConnectionFactory());
+        container.addMessageListener(redisMessageListerner(), redisChanelTopc());
         return container;
     }
 }
