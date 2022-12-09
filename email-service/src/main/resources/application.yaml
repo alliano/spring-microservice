@@ -9,8 +9,8 @@ spring:
         username: alliano-dev
         password: alliano361
         database: 0
-        connection-timeout: 10s
         chanel-name: mail-sender
+        connect-timeout: 10s
     mail:
         port: 587
         host: smtp.gmail.com
