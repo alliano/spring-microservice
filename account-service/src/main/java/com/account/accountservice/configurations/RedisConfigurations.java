@@ -8,6 +8,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 
+import feign.Logger;
 import lombok.AllArgsConstructor;
 
 @Configuration @AllArgsConstructor
@@ -34,4 +35,9 @@ public class RedisConfigurations {
         redisTemplate.setValueSerializer(new Jackson2JsonRedisSerializer<String>(String.class));
         return redisTemplate;
     }
+    @Bean
+    public Logger.Level feignLogger() {
+        return  Logger.Level.FULL;
+    }
+
 }
