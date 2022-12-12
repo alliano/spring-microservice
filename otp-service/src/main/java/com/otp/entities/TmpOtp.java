@@ -2,6 +2,7 @@ package com.otp.entities;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.index.Indexed;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -15,5 +16,6 @@ public class TmpOtp {
 
     private String otp;
 
+    @Indexed
     private String email;
 }

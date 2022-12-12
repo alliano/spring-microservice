@@ -1,16 +1,20 @@
 package com.otp.services;
 
 import java.text.DecimalFormat;
+import java.util.HashMap;
 import java.util.Optional;
 import java.util.Random;
 
 import org.springframework.core.env.Environment;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.listener.ChannelTopic;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.otp.dtos.EmailDto;
 import com.otp.dtos.RegisterDto;
+import com.otp.dtos.VerifivationDto;
 import com.otp.entities.TmpOtp;
 import com.otp.repositories.TmpOtpRepository;
 import com.otp.services.interfaces.OtpService;
@@ -55,7 +59,7 @@ public class OtpServiceimpl implements OtpService {
     @Override
     public String loggger() {
         String port = this.environment.getProperty("local.server.port");
-        String host = this.environment.getProperty("local.server.host");
+        String host = "service 1 port ";
         return host+":"+port;
     }
 
@@ -66,7 +70,23 @@ public class OtpServiceimpl implements OtpService {
         emaildto.setTo(to);
         emaildto.setBody(body);
         emaildto.setSubject("kode verifikasi anda");
+        // publish data ke redis message broker
         this.redisTemplate.convertAndSend(this.channelTopic.getTopic(), emaildto);
+    }
+
+    @Override
+    public ResponseEntity<?> verifivationOtp(VerifivationDto verifivationDto) {
+        // cek apakah email valid
+        Optional<TmpOtp> tmpOtp = this.tmpOtpRepository.findByEmail(verifivationDto.getEmail());
+
+        if(tmpOtp.isEmpty()) return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new HashMap<String, String>().put("message","email not available"));
+        //cek apakah otpp valid
+        if(tmpOtp.get().getOtp().equals(verifivationDto.getOtp())) {
+            return ResponseEntity.status(HttpStatus.OK).build();
+        }
+        else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
     }
 
 }

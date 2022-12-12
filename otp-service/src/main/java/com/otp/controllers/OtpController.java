@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.otp.dtos.RegisterDto;
+import com.otp.dtos.VerifivationDto;
 import com.otp.services.interfaces.OtpService;
 
 import lombok.AllArgsConstructor;
@@ -28,5 +29,11 @@ public class OtpController {
     @RequestMapping(method = RequestMethod.GET, path = "/load")
     public String tesLoadbalancer(){
         return this.otpService.loggger();
+    }
+
+    @RequestMapping(method = RequestMethod.POST, path = "/verification")
+    public ResponseEntity<?> verificationOtp(@RequestBody VerifivationDto verifivationDto) {
+        log.info("TRIGEREDDDDDDD");
+        return this.otpService.verifivationOtp(verifivationDto);
     }
 }
