@@ -7,7 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity @Setter @Getter
 @Table(name = "account")
 public class Account {
 
