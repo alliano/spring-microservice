@@ -12,15 +12,26 @@ spring:
         chanel-name: mail-sender
         connect-timeout: 10s
     mail:
-        port: 587
-        host: smtp.gmail.com
-        username:
-        password:
         properties:
-            smtp:
-                auth: true
-                starttles:
-                    enable: true
+            mail:
+                smtp:
+                    auth: true
+                    starttls:
+                        enable: true
+                        required: true
+                    ssl:
+                        enable: true
+        default-encoding: UTF-8
+        host: smtp.gmail.com
+        username: allianoanonymous@gmail.com
+        # password: Shusono'o3433*#
+        password: zddyqpziqvoujtju
+        port: 465
+        protocol: smtp
+        test-connection: false
+        smtp:
+            starttls:
+                enable: false
 logging:
   level:
     jap:
