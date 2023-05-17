@@ -25,7 +25,7 @@ spring:
         host: smtp.gmail.com
         username: allianoanonymous@gmail.com
         # password: Shusono'o3433*#
-        password: zddyqpziqvoujtju
+        password: ${passwd}
         port: 465
         protocol: smtp
         test-connection: false
